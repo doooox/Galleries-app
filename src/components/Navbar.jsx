@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectIsAuthenticated } from '../store/auth/selectors'
-import { setIsAuthenticated } from '../store/auth/slice'
+import { setIsAuthenticated, logout } from '../store/auth/slice'
 import Routes from '../Routes'
 
 
@@ -49,14 +49,14 @@ const Navbar = () => {
                     )}
                     {isAuthenticated && (
                         <li className='nav-item'>
-                            <Link className='nav-link text-dark' to='/logout'>
+                            <button className='btn' onClick={() => dispatch(logout())}>
                                 Logout
-                            </Link>
+                            </button>
                         </li>
                     )}
                 </ul>
             </nav>
-            <Routes/>
+            <Routes />
         </>
     )
 }
