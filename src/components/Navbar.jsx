@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectIsAuthenticated } from '../store/auth/selectors'
 import { setIsAuthenticated } from '../store/auth/slice'
+import Routes from '../Routes'
 
 
 const Navbar = () => {
@@ -55,6 +56,7 @@ const Navbar = () => {
                     )}
                 </ul>
             </nav>
+            <Routes/>
         </>
     )
 }
