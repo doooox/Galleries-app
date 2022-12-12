@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { register } from '../store/auth/slice'
+import { FaUserAlt } from 'react-icons/fa'
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -35,9 +36,9 @@ const RegisterPage = () => {
   const { first_name, last_name, email, password, password_confirmation, terms_and_conditions } = formData;
 
   return (
-    <>
-      <h1>Register Page</h1>
-      <div className='containter m-3 text-center'>
+    <div className='container d.flex my-5'>
+      <h1> <FaUserAlt className='m-2' />Register Page</h1>
+      <div className=' m-3 text-center'>
         <form onSubmit={onSubmitHandler}>
           <div className="form-group">
             <input
@@ -118,7 +119,7 @@ const RegisterPage = () => {
           </div>
         </form>
       </div>
-    </>
+    </div>
   )
 }
 

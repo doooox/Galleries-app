@@ -9,21 +9,21 @@ const GalleriesList = ({ galleries }) => {
 
   const dispatch = useDispatch();
   const isHidden = useSelector(selectIsHidden);
-
+ 
   return (
     <div className=' m-3 text-center'>
       {galleries.length > 0 ? (
         galleries.map((gallery, index) => (
           <div key={index}>
-            <h1>
+            <h1 className="display-3">
               <Link to={`galleries/${gallery.id}`}>
                 {gallery.name}
               </Link>
             </h1>
             <img
               style={{
-                width: "300px",
-                height: "250px",
+                width: "30%",
+                height: "30%",
               }}
               src={
                 gallery.images[0]?.image_url
@@ -47,7 +47,7 @@ const GalleriesList = ({ galleries }) => {
           <Link to="/create"> <button className="btn">Create New Gallery</button> </Link>
         </>
       )}
-      {!isHidden  && (
+      {!isHidden && (
         <button
           className='btn'
           type='button'

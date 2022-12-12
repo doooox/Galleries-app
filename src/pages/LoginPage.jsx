@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoginErrorMsg } from "../store/auth/selectors";
 import { login, setLoginErrorMsg } from "../store/auth/slice";
-
+import { FaSignInAlt } from 'react-icons/fa'
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -26,8 +26,8 @@ const Login = () => {
         dispatch(login(userData))
     }
     return (
-        <>
-        <h1>Login Page</h1>
+        <div className="container d.flex my-5">
+            <h1> <FaSignInAlt className="mx-3"/>Login Page</h1>
             <div className='containter p-5 text-center'>
                 <form onSubmit={onSubmitHandler}>
                     <div className="form-group">
@@ -58,8 +58,7 @@ const Login = () => {
                     </div>
                 </form>
             </div>
-        </>
-
+        </div>
     );
 }
 

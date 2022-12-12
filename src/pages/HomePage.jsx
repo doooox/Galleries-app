@@ -24,7 +24,7 @@ const Home = () => {
   }, [currentPage, search]);
 
   const galleries = useSelector(selectGalleries);
-  
+
   return (
     <>
       <FilterGallery />

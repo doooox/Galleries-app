@@ -29,10 +29,10 @@ const UserGalleries = () => {
   const galleries = useSelector(selectGalleries);
   
   return (
-    <div>
+    <>
       <FilterGallery />
       <GalleryList galleries={galleries} />
-    </div>
+    </>
   );
 }
 

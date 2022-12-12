@@ -1,4 +1,6 @@
 import React from 'react'
+import { FaSignInAlt, FaSignOutAlt, FaUserAlt, FaImages, FaPlusCircle } from 'react-icons/fa'
+import { GrGallery } from 'react-icons/gr';
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectIsAuthenticated } from '../store/auth/selectors'
@@ -16,41 +18,41 @@ const Navbar = () => {
                     <span className='navbar-brand'>Galleries App</span>
                     <li className='nav-item'>
                         <Link className='nav-link text-dark' to='/'>
-                            All Galleries
+                           <FaImages /> All Galleries
                         </Link>
                     </li>
                     {!isAuthenticated && (
                         <li className='nav-item'>
                             <Link className='nav-link text-dark' to='/login'>
-                                Login
+                                <FaSignInAlt /> Login
                             </Link>
                         </li>
                     )}
                     {!isAuthenticated && (
                         <li className='nav-item'>
                             <Link className='nav-link text-dark' to='/register'>
-                                Register
+                              <FaUserAlt/>  Register
                             </Link>
                         </li>
                     )}
                     {isAuthenticated && (
                         <li className='nav-item'>
                             <Link className='nav-link text-dark' to='/my-galleries'>
-                                My Galleries
+                            <FaImages />  My Galleries
                             </Link>
                         </li>
                     )}
                     {isAuthenticated && (
                         <li className='nav-item'>
                             <Link className='nav-link text-dark' to='/create'>
-                                Create new Gallery
+                               <FaPlusCircle/> Create new Gallery
                             </Link>
                         </li>
                     )}
                     {isAuthenticated && (
                         <li className='nav-item'>
                             <button className='btn' onClick={() => dispatch(logout())}>
-                                Logout
+                               <FaSignOutAlt/> Logout
                             </button>
                         </li>
                     )}

@@ -63,14 +63,14 @@ const ViewGallery = () => {
       {gallery.user_id === +localStorage.userId && (
         <div className='m-3  text-right'>
           <button
-            className='btn btn-light'
+            className='btn btn-success'
             onClick={() => history.push(`/edit-gallery/${id}`)}
           >
             Edit
           </button>
           <button
             type='button'
-            className='btn btn-light ml-2'
+            className='btn btn-danger ml-2'
             onClick={deleteHandler}
           >
             Delete
@@ -83,7 +83,8 @@ const ViewGallery = () => {
           <Link to={`/authors/${gallery.user_id}`}>
             {gallery.user.first_name} {gallery.user.last_name}
           </Link>{" "}
-          {new Date(gallery.created_at).toLocaleString}
+          <br />
+          <small>{new Date(gallery.created_at).toLocaleString()}</small>
         </h2>
       )}
       <p className='text-center'>{gallery.description}</p>
@@ -91,25 +92,21 @@ const ViewGallery = () => {
       <div
         id='carouselExampleControls'
         className='carousel slide'
-        style={{ background: "#d9d9d9" }}
+        style={{ background: "#7d7777" }}
         data-ride='carousel'
       >
         {gallery && (
           <div className='carousel-inner'>
             <div className='carousel-item active '>
               <a
-                href={gallery.images[currentPicture].image_url}
+                href={gallery.images[currentPicture]?.image_url}
                 target='_blank'
               >
                 <img
-                  src={gallery.images[currentPicture].image_url}
+                  src={gallery.images[currentPicture]?.image_url}
                   className='d-block mx-auto'
-                  style={{
-                    width: "1000px",
-                    height: "700px",
-                    objectFit: "cover",
-                  }}
-                  alt='1 slide'
+                  style={{ width: "40%", height: "30%" }}
+                  alt='First slide'
                 />
               </a>
             </div>
@@ -144,8 +141,8 @@ const ViewGallery = () => {
         <ul className='list-group list-group-flush'>
           {gallery.comments &&
             gallery.comments.map((comment) => (
-              <div className='m-3' key={comment.id}>
-                <li className='list-group-item'>
+              <div className='m-3 d-flex justify-content-center' key={comment.id}>
+                <li className='list-group-item w-75'>
                   <p>{comment.content}</p>
                   {comment.user && (
                     <span>
@@ -161,14 +158,16 @@ const ViewGallery = () => {
                     {new Date(comment.created_at).toLocaleString()}
                   </span>
                   {+localStorage.userId === comment.user_id && (
-                    <button
+                    <div className="d-flex justify-content-center my-3">
+                      <button
                       style={{ display: "flex" }}
                       type='button'
                       onClick={() => deleteCommentHandler(comment.id)}
                       className='btn btn-danger mb-2'
                     >
                       Delete
-                    </button>
+                    </button></div>
+
                   )}
                 </li>
               </div>
@@ -184,10 +183,10 @@ const ViewGallery = () => {
               max='1000'
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              placeholder='Enter comment...'
+              placeholder='Enter your comment...'
             ></textarea>
             <br />
-            <button type='submit' className='btn btn-light'>
+            <button type='submit' className='btn btn-primary'>
               Submit
             </button>
           </form>

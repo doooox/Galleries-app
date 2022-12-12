@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaPlusCircle } from 'react-icons/fa';
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useHistory, useParams } from "react-router-dom";
@@ -53,6 +54,7 @@ const CreateNewGallery = () => {
                     content: { gallery, id },
                     meta: {
                         onSuccess: () => {
+                            console.log("go to", `edit-gallery/${id}`);
                             history.push(`/edit-gallery/${id}`);
                         },
                     },
@@ -107,7 +109,8 @@ const CreateNewGallery = () => {
         return <Redirect to='/' />;
     }
     return (
-        <div className='container m-3'>
+        <div className='container d.flex my-5'>
+            <h1 className="m-4"><FaPlusCircle /> Create New Gallery</h1>
             <form onSubmit={onSubmitHandler}>
                 <div className='form-group'>
                     <input
@@ -188,7 +191,7 @@ const CreateNewGallery = () => {
                 >
                     Add another URL
                 </button>
-                <button type='submit' className='btn btn-light mr-3'>
+                <button type='submit' className='btn btn-primary mr-3'>
                     Submit
                 </button>
                 <button
