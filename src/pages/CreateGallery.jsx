@@ -53,8 +53,7 @@ const CreateNewGallery = () => {
                     content: { gallery, id },
                     meta: {
                         onSuccess: () => {
-                            console.log("go to", `edit/${id}`);
-                            history.push(`/edit/${id}`);
+                            history.push(`/edit-gallery/${id}`);
                         },
                     },
                 })

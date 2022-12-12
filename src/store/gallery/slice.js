@@ -10,6 +10,8 @@ const middlewareActions = {
   createGallery: () => {},
   editGallery: () => {},
   deleteGallery: () => {},
+  addComment: () => {},
+  removeComment: () => {},
 };
 
 export const gallerySlice = createSlice({
@@ -45,6 +47,14 @@ export const gallerySlice = createSlice({
     setGallery: (state, action) => {
       state.gallery = action.payload;
     },
+    addCommentToGallery: (state, action) => {
+      state.gallery.comments.push(action.payload);
+    },
+    removeCommentFromGallery: (state, action) => {
+      state.gallery.comments = state.gallery.comments.filter(
+        (comment) => comment.id != action.payload
+      );
+    },
     setCurrentPicture: (state, action) => {
       if (action.payload === "prev") {
         state.currentPicture--;
@@ -53,7 +63,7 @@ export const gallerySlice = createSlice({
       } else {
         state.currentPicture = action.payload;
       }
-      // carousel functionality
+
       if (state.gallery.images) {
         if (state.currentPicture < 0) {
           state.currentPicture = state.gallery.images.length - 1;
@@ -88,5 +98,9 @@ export const {
   editGallery,
   deleteGallery,
   reset,
+  addComment,
+  addCommentToGallery,
+  removeComment,
+  removeCommentFromGallery,
 } = gallerySlice.actions;
 export default gallerySlice.reducer;

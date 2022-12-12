@@ -1,6 +1,9 @@
 import { call, put, takeLatest } from "redux-saga/effects";
+import CommentService from "../../services/CommentService";
 import GalleryService from "../../services/GalleryService";
 import {
+  addComment,
+  addCommentToGallery,
   addGalleries,
   addGallery,
   createGallery,
@@ -10,6 +13,8 @@ import {
   getGallery,
   getMyGalleries,
   getUserGalleries,
+  removeComment,
+  removeCommentFromGallery,
   setGalleries,
   setGallery,
   setIsHidden,
@@ -88,6 +93,22 @@ function* deleteGalleryHandler(action) {
     yield call(action.payload.meta.onSuccess);
   }
 }
+function* addCommentHandler(action) {
+  try {
+    const data = yield call(CommentService.createComment, action.payload);
+    yield put(addCommentToGallery(data));
+  } catch (error) {
+    console.log(error);
+  }
+}
+function* removeCommentHandler(action) {
+  try {
+    yield call(CommentService.deleteComment, action.payload);
+    yield put(removeCommentFromGallery(action.payload));
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export function* watchGallery() {
   yield takeLatest(getGalleries.type, getGalleriesHandler);
@@ -97,4 +118,6 @@ export function* watchGallery() {
   yield takeLatest(createGallery.type, createGalleryHandler);
   yield takeLatest(editGallery.type, editGalleryHandler);
   yield takeLatest(deleteGallery.type, deleteGalleryHandler);
+  yield takeLatest(addComment.type, addCommentHandler);
+  yield takeLatest(removeComment.type, removeCommentHandler);
 }

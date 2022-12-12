@@ -12,7 +12,7 @@ const GalleriesList = ({ galleries }) => {
 
   return (
     <div className=' m-3 text-center'>
-      {galleries ? (
+      {galleries.length > 0 ? (
         galleries.map((gallery, index) => (
           <div key={index}>
             <h1>

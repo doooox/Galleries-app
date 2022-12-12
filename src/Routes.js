@@ -36,7 +36,7 @@ const Routes = () => {
           <PrivateRoute exact path='/create'>
             <CreateNewGallery />
           </PrivateRoute>
-          <PrivateRoute path='/edit/:id'>
+          <PrivateRoute exact path='/edit-gallery/:id'>
             <CreateNewGallery />
           </PrivateRoute>
       </Switch>
