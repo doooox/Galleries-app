@@ -4,20 +4,40 @@ import PublicRoute from "./components/PublicRoute";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import MyGalleries from "./pages/MyGallery";
+import UserGalleries from "./pages/UserGalleries";
+import PrivateRoute from "./components/PrivateRoute";
+import ViewGallery from "./components/ViewGallery";
+
 
 const Routes = () => {
   return (
     <>
       <Switch>
-        <PublicRoute exact path="/">
-          <HomePage />
-        </PublicRoute>
-        <PublicRoute path="/login">
-          <LoginPage />
-        </PublicRoute>
-        <PublicRoute path="/register">
-          <RegisterPage />
-        </PublicRoute>
+      <Route exact path='/'>
+            <HomePage />
+          </Route>
+          <PublicRoute path='/login'>
+            <LoginPage />
+          </PublicRoute>
+          <PublicRoute path='/register'>
+            <RegisterPage />
+          </PublicRoute>
+          <PrivateRoute exact path='/my-galleries/'>
+            <MyGalleries />
+          </PrivateRoute>
+          <Route exact path='/authors/:id'>
+            <UserGalleries />
+          </Route>
+          <Route exact path='/galleries/:id'>
+            <ViewGallery />
+          </Route>
+          {/* <PrivateRoute exact path='/create'>
+            <CreateNewGallery />
+          </PrivateRoute>
+          <PrivateRoute path='/edit-gallery/:id'>
+            <CreateNewGallery />
+          </PrivateRoute> */}
       </Switch>
     </>
   );

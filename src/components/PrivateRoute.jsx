@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
 import { selectIsAuthenticated } from '../store/auth/selectors'
 
-const PrivateRoute = () => {
+const PrivateRoute = ({children, ...props}) => {
+  const isAuthenticated = useSelector(selectIsAuthenticated);
   return (
     <div>
         <Route {...props}>
