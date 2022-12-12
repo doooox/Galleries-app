@@ -8,18 +8,23 @@ import {
   selectSearch,
 } from "../store/gallery/selectors";
 import { getMyGalleries, reset } from "../store/gallery/slice";
-function MyGalleries() {
+
+const MyGalleries = () => {
   const dispatch = useDispatch();
   const currentPage = useSelector(selectCurrentPage);
   const search = useSelector(selectSearch);
+
   useEffect(() => {
     dispatch(reset());
     dispatch(getMyGalleries({ page: 1, filter: "" }));
   }, []);
+
   useEffect(() => {
     dispatch(getMyGalleries({ page: currentPage, filter: search }));
   }, [currentPage, search]);
+
   const galleries = useSelector(selectGalleries);
+
   return (
     <div>
       <FilterGallery />

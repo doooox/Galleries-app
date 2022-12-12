@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoginErrorMsg } from "../store/auth/selectors";
 import { login, setLoginErrorMsg } from "../store/auth/slice";
-function Login() {
+
+
+const Login = () => {
     const dispatch = useDispatch();
     const error = useSelector(selectLoginErrorMsg);
     const [formData, setFormData] = useState({ email: "", password: "" });

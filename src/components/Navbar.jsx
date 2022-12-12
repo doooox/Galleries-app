@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectIsAuthenticated } from '../store/auth/selectors'
-import { setIsAuthenticated, logout } from '../store/auth/slice'
+import { logout } from '../store/auth/slice'
 import Routes from '../Routes'
 
 

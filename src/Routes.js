@@ -8,6 +8,7 @@ import MyGalleries from "./pages/MyGallery";
 import UserGalleries from "./pages/UserGalleries";
 import PrivateRoute from "./components/PrivateRoute";
 import ViewGallery from "./components/ViewGallery";
+import CreateNewGallery from "./pages/CreateGallery";
 
 
 const Routes = () => {
@@ -32,12 +33,12 @@ const Routes = () => {
           <Route exact path='/galleries/:id'>
             <ViewGallery />
           </Route>
-          {/* <PrivateRoute exact path='/create'>
+          <PrivateRoute exact path='/create'>
             <CreateNewGallery />
           </PrivateRoute>
-          <PrivateRoute path='/edit-gallery/:id'>
+          <PrivateRoute path='/edit/:id'>
             <CreateNewGallery />
-          </PrivateRoute> */}
+          </PrivateRoute>
       </Switch>
     </>
   );

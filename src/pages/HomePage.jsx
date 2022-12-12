@@ -8,18 +8,23 @@ import {
 import { getGalleries, reset } from "../store/gallery/slice";
 import GalleryList from "../components/GalleryList";
 import FilterGallery from "../components/FilterGallery";
-function Home() {
+
+const Home = () => {
   const dispatch = useDispatch();
   const currentPage = useSelector(selectCurrentPage);
   const search = useSelector(selectSearch);
+
   useEffect(() => {
     dispatch(reset());
     dispatch(getGalleries());
   }, []);
+
   useEffect(() => {
     dispatch(getGalleries({ page: currentPage, filter: search }));
   }, [currentPage, search]);
+
   const galleries = useSelector(selectGalleries);
+  
   return (
     <>
       <FilterGallery />
