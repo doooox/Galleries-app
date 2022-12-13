@@ -17,6 +17,7 @@ import {
 
 const ViewGallery = () => {
   const { id } = useParams();
+  console.log(id);
   const history = useHistory();
   const dispatch = useDispatch();
   const [comment, setComment] = useState("");
@@ -64,7 +65,7 @@ const ViewGallery = () => {
         <div className='m-3  text-right'>
           <button
             className='btn btn-success'
-            onClick={() => history.push(`/edit-gallery/${id}`)}
+            onClick={() => history.push(`/edit/${id}`)}
           >
             Edit
           </button>

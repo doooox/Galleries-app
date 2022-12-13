@@ -10,8 +10,8 @@ import {
 } from "../store/gallery/selectors";
 import { getUserGalleries, reset } from "../store/gallery/slice";
 
-
 const UserGalleries = () => {
+  
   let { id } = useParams();
   const dispatch = useDispatch();
   const currentPage = useSelector(selectCurrentPage);

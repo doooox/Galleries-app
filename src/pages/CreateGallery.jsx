@@ -54,8 +54,8 @@ const CreateNewGallery = () => {
                     content: { gallery, id },
                     meta: {
                         onSuccess: () => {
-                            console.log("go to", `edit-gallery/${id}`);
-                            history.push(`/edit-gallery/${id}`);
+                            history.push(`/edit/${id}`);
+                            history.push(`/my-galleries`);
                         },
                     },
                 })
@@ -104,10 +104,7 @@ const CreateNewGallery = () => {
         setImageList(newImageList);
     };
 
-    const userId = useSelector(selectUserId);
-    if (id && fetchedGallery && fetchedGallery.user_id !== parseInt(userId)) {
-        return <Redirect to='/' />;
-    }
+  
     return (
         <div className='container d.flex my-5'>
             <h1 className="m-4"><FaPlusCircle /> Create New Gallery</h1>
